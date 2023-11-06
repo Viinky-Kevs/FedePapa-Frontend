@@ -1,0 +1,283 @@
+.container {
+    width: calc(100% - 50px);
+    height: 100vh;
+    margin-left: 50px;
+    position: relative;
+}
+
+.container .header {
+    position: relative;
+    height: 3rem;
+    background-color: rgb(232, 232, 232);
+    width: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*overflow: scroll;*/
+    scrollbar-width: none;
+}
+
+.container .header .header-body {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .header .header-body .selected-day {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.container .header .header-body .selected-day .date {
+    width: 20%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container .header .header-body .selected-day .date h5 {
+    font-size: 20px;
+    font-family: 'Poppins';
+    font-weight: 600;
+}
+
+.container .header .header-body .selected-day .date h6 {
+    font-size: 12px;
+    font-family: 'Poppins';
+}
+
+.container .header .header-body .selected-day .data {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.container .header .header-body .day .data .temp,
+.container .header .header-body .day .data .prep,
+.container .header .header-body .day .data .hr,
+.container .header .header-body .day .data .ws {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 25%;
+}
+
+.container .header .btn {
+    width: 2%;
+    z-index: 999;
+}
+
+.container .header .btn button {
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.container .body {
+    width: 100%;
+    height: calc(100% - 2.7rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+}
+
+.container .body .left {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0.5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    min-height: 50vh;
+    overflow-y: scroll;
+    scrollbar-width: 0;
+}
+
+.container .body .right {
+    width: 70%;
+    height: 100%;
+    margin: 0.5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+}
+
+.container .body .left .options {
+    width: 98%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .body .left .options .title h4 {
+    font-family: 'Poppins';
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.container .body .left .options .input-opt .option {
+    width: 10rem;
+    height: 2rem;
+}
+
+.container .body .left #map {
+    height: 50.2vh;
+    width: 96%;
+    border-radius: 10px;
+}
+
+.container .body .left .map {
+    display: flex;
+    justify-content: center;
+}
+
+.container .body .left .dates {
+    width: 98%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.container .body .left .dates .input-dates {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .body .left .dates .input-dates input {
+    width: 90%;
+    height: 2rem;
+    border-radius: 0.33rem;
+}
+
+.container .body .left .dates .input-dates label {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Poppins';
+}
+
+.container .body .left .dates .btn button {
+    width: 90%;
+    height: 2.5rem;
+    border-radius: 0.33rem;
+    background-color: rgb(202, 202, 22);
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.container .body .right .graph-container {
+    width: 98%;
+    height: 120vh;
+}
+
+.container .body .right .graph-container .graph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 98%;
+    height: 60vh;
+    min-width: 50rem;
+    overflow: hidden;
+    scrollbar-width: 0px;
+}
+
+.title {
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title h2 {
+    font-family: 'Poppins';
+    font-size: 25px;
+    font-weight: 700;
+}
+
+::-webkit-scrollbar {
+    width: 0.03rem;
+}
+  
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px grey; 
+    border-radius: 0.33rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent; 
+    border-radius: 10px;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: transparent; 
+}
+
+.loader {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.loader:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width:700px) {
+    .container .header {
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    .container .header .header-body {
+        min-width: 60rem;
+    }
+
+    .container .body {
+        flex-direction: column;
+        height: 200vh;
+    }
+
+    .container .body .left {
+        width: 98%;
+        height: 100vh;
+    }
+    .container .body .right {
+        width: 98%;
+        height: 120vh;
+    }
+
+    .graph {
+        height: 60vh;
+    }
+}

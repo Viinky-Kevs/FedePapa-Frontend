@@ -1,0 +1,130 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="header">
+        <div class="btn">
+            <button (click)="scrollLeft()">
+                <span class="material-symbols-outlined">arrow_back_ios</span>
+            </button>
+        </div>
+        <div class="header-body">
+            <div class="selected-day">
+                <div class="date">
+                    <h5> {{ data[currentPosition].day }} </h5>
+                    <h6> {{ data[currentPosition].date }} </h6>
+                </div>
+                <div class="data">
+                    <div class="temp">
+                        <p> Temperatura: <strong>{{data[currentPosition].temp}} °C</strong></p>
+                    </div>
+                    <div class="prep">
+                        <p> Precipitación: <strong>{{ data[currentPosition].prep }} mm</strong> </p>
+                    </div>
+                    <div class="hr">
+                        <p> Humedad Relativa: <strong>{{ data[currentPosition].hr }} %</strong> </p>
+                    </div>
+                    <div class="ws">
+                        <p> Velocidad del Viento: <strong>{{ data[currentPosition].ws }} m/s</strong> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <button (click)="scrollRight()">
+                <span class="material-symbols-outlined">arrow_forward_ios</span>
+            </button>
+        </div>
+    </div>
+    <div class="body">
+        <div class="left">
+            <div class="options">
+                <div class="title">
+                    <h4>Selecciona un lote ya guardado!</h4>
+                </div>
+                <div class="input-opt">
+                    <select class="option" [(ngModel)]="dataSelect.polygon" (ngModelChange)="changeOpt()">
+                        <option *ngFor="let data of dataOptions" [value]="data.id_polygon"> {{data.name_polygon}} </option>
+                    </select>
+                </div>
+            </div>
+            <div class="map" id="map"></div>
+            <div class="dates">
+                <div class="input-dates">
+                    <label for="date_ini">Fecha inicial de Siembra (Tentativa)</label>
+                    <input type="date" name="date_ini" [(ngModel)]="dates.initial">
+                </div>
+                <div class="input-dates">
+                    <label for="date_fin">Fecha final de Siembra (Tentativa)</label>
+                    <input type="date" name="date_fin" [(ngModel)]="dates.end">
+                </div>
+                <div class="btn">
+                    <button (click)="changeDate()">Visualizar Pronóstico</button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <mat-tab-group animationDuration="1ms">
+                <mat-tab label="Temperatura" color="red" class="graph-container">
+                    <div class="graph">
+                        <div class="title">
+                            <h2>Temperatura Registrada</h2>
+                        </div>
+                        <canvas #tempMChart></canvas>
+                    </div>
+                    <div class="graph">
+                        <div class="title">
+                            <h2>Pronóstico Temperatura</h2>
+                        </div>
+                        <canvas #tempPChart></canvas>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Precipitación" color="red">
+                    <div class="graph">
+                        <div class="title">
+                            <h2>Precipitación Registrada</h2>
+                        </div>
+                        <canvas #prepChart></canvas>
+                    </div>
+                    <div class="graph">
+                        <div class="title">
+                            <h2>Pronóstico Precipitación</h2>
+                        </div>
+                        <canvas #prepPChart></canvas>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Humedad Relativa" color="red">
+                    <div class="graph">
+                        <div class="title">
+                            <h2>Humedad Relativa Registrada</h2>
+                        </div>
+                        <canvas #hrChart></canvas>
+                    </div>
+                    <div class="graph">
+                        <div class="title">
+                            <h2>Pronóstico Humedad Relativa</h2>
+                        </div>
+                        <canvas #hrPChart></canvas>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Velocidad del Viento" color="red">
+                    <div class="graph">
+                        <div class="title">
+                            <h2>Velocidad del Viento Registrada</h2>
+                        </div>
+                        <canvas #windChart></canvas>
+                    </div>
+                    <div class="graph">
+                        <div class="title">
+                            <h2>Pronóstico Velocidad del Viento</h2>
+                        </div>
+                        <canvas #windPChart></canvas>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="loader">
+    <mat-spinner></mat-spinner>
+</div>

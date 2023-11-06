@@ -1,0 +1,96 @@
+<div class="page-full">
+    <div class="container">
+        <div class="container-inputs" *ngIf="isLogin">
+            <div class="container-login">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="../../assets/fp.png" alt="">
+                    </div>
+                    <div class="legend">
+                        <h4>
+                            Bienvenido a la plataforma de pronóstico de variables climáticas
+                        </h4>
+                    </div>
+                </div>
+                <div class="inputs">
+                    <div class="title">
+                        <h1>Inciar Sesión</h1>
+                    </div>
+                    <div class="input-user">
+                        <label for="username">Nombre de Usuario</label>
+                        <input type="text" placeholder="Nombre de Usuario" [(ngModel)]="userLogin.username"
+                        name="username" class="input-text" required>
+                    </div>
+                    <div class="input-user">
+                        <label for="password">Contraseña</label>
+                        <input type="password" placeholder="Contraseña" [(ngModel)]="userLogin.password"
+                        name="password" class="input-text" required>
+                    </div>
+                    <div style="height: 15%;"></div>
+                    <div class="btn-login">
+                        <button (click)="login()">
+                            Ingresar
+                        </button>
+                    </div>
+                    <div class="footer">
+                        <a href="">¿Olvidaste la contraseña?</a>
+                        <br>
+                        <a role="button" (click)="change(1)">¿No tienes cuenta? Registrate!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Registro de usuarios -->
+        <div class="container-inputs" *ngIf="isRegister">
+            <div class="container-login">
+                <div class="inputs">
+                    <div class="title">
+                        <h1>Registrarse</h1>
+                    </div>
+                    <div class="input-user">
+                        <label for="username">Nombre de Usuario</label>
+                        <input type="text" placeholder="Nombre de Usuario" [(ngModel)]="userRegister.username"
+                        name="username" class="input-text">
+                    </div>
+                    <div class="input-user">
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="Email" [(ngModel)]="userRegister.email"
+                        name="email" class="input-text">
+                    </div>
+                    <div class="input-user">
+                        <label for="password">Contraseña</label>
+                        <input type="password" placeholder="Contraseña" [(ngModel)]="userRegister.password"
+                        name="password" class="input-text">
+                    </div>
+                    <div class="input-user">
+                        <label for="cpassword">Confirmar Contraseña</label>
+                        <input type="password" placeholder="Contraseña" [(ngModel)]="userRegister.confirm"
+                        name="cpassword" class="input-text">
+                    </div>
+                    <div class="btn-login">
+                        <button (click)="register()">
+                            Registrarse
+                        </button>
+                    </div>
+                    <div class="footer">
+                        <a role="button" (click)="change(2)">¿Tienes cuenta? Inicia Sesión!</a>
+                    </div>
+                </div>
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="../../assets/fp.png" alt="">
+                    </div>
+                    <div class="legend">
+                        <h4>
+                            Registrate para ingresar y utilizar las herramientas!
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="loader">
+    <mat-spinner></mat-spinner>
+</div>

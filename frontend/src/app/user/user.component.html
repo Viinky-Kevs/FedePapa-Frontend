@@ -1,0 +1,95 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="page">
+        <div class="options">
+            <div class="user-info">
+                <div class="title">
+                    <span class="material-symbols-outlined icon">person</span>
+                    <h2>{{userData.username}}</h2>
+                </div>
+                <div class="inputs">
+                    <label for="id"> ID Usuario </label>
+                    <input type="number" name="id" [(ngModel)]="userData.user_id" disabled>
+                </div>
+                <div class="inputs">
+                    <label for="username"> Nombre de Usuario </label>
+                    <input type="text" name="username" [(ngModel)]="userData.username">
+                </div>
+                <div class="inputs">
+                    <label for="email"> Correo Electrónico </label>
+                    <input type="text" name="email" [(ngModel)]="userData.email">
+                </div>
+                <div class="inputs">
+                    <label for="created"> Creado el </label>
+                    <input type="text" name="created" [(ngModel)]="userData.created_on" disabled>
+                </div>
+                <div class="inputs">
+                    <label for="last"> Fecha último ingreso </label>
+                    <input type="text" name="last" [(ngModel)]="userData.last_login" disabled>
+                </div>
+            </div>
+            <div class="password">
+                <div class="change">
+                    <div class="title">
+                        <span class="material-symbols-outlined">lock</span>
+                        <h3>Cambiar Contraseña</h3>
+                    </div>
+                    <div class="inputs">
+                        <input type="password" placeholder="Contraseña" [(ngModel)]="userPasword.password">
+                        <input type="password" placeholder="Confirmar Contraseña" [(ngModel)]="userPasword.confirm">
+                    </div>
+                    <div class="btn">
+                        <button (click)="changeP()">
+                            Cambiar Contraseña
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="polygons">
+            <div class="example-small-box mat-elevation-z4 container-table">
+                <br>
+                <table mat-table [dataSource]="data" class="mat-elevation-z8 table">
+                    <ng-container matColumnDef="id_polygon">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id_polygon}} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="name_polygon">
+                        <th mat-header-cell *matHeaderCellDef> Nombre del Polígono </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name_polygon}} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="geometry">
+                        <th mat-header-cell *matHeaderCellDef> Polígono </th>
+                        <td mat-cell *matCellDef="let element"> {{element.geometry}} </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="polygon_area">
+                        <th mat-header-cell *matHeaderCellDef> Área </th>
+                        <td mat-cell *matCellDef="let element"> {{element.polygon_area}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="created_on">
+                        <th mat-header-cell *matHeaderCellDef> Fecha Creación </th>
+                        <td mat-cell *matCellDef="let element"> {{element.created_on}} </td>
+                    </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <div class="paginator">
+                    <mat-paginator [pageSizeOptions]="[5, 10]"
+                        showFirstLastButtons
+                        aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="loader">
+    <mat-spinner></mat-spinner>
+</div>

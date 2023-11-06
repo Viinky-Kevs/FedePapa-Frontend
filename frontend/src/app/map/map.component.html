@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="map">
+        <div id="map"></div>
+    </div>
+    <div class="modal" *ngIf="modal" #movableDiv (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)" (mouseup)="onMouseUp($event)">
+        <div class="info-modal">
+            <div class="left">
+                <div class="title">
+                    <h2>¿Deseas guardar el polígono dibujado?</h2>
+                </div>
+                <div class="inputs">
+                    <label for="name_pol">Ingresa el nombre del polígono</label>
+                    <input type="text" class="input-form" name="name_pol" [(ngModel)]="userPolygon.name">
+                    <div class="btn">
+                        <button (click)="saveContinue()">
+                            Guardar y Continuar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="icon">
+                    <a role="button" (click)="closeModal()" title="Cerrar">
+                        <span class="material-symbols-outlined">close</span>
+                    </a>
+                </div>
+                <div class="title">
+                    <h2>¿Deseas continuar sin guardar?</h2>
+                </div>
+                <div class="inputs">
+                    <div class="btn">
+                        <button (click)="continue()">
+                            Continuar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="loader">
+    <mat-spinner></mat-spinner>
+</div>
+
+

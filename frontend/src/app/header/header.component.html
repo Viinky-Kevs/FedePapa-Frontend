@@ -1,0 +1,31 @@
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed':''">
+    <div class="logo-container">
+        <img cImg fluid src="assets/fedepapalogoblanco.png" (click)="toggleCollapse()" style="cursor: pointer;"/>
+        <div class="logo-text" *ngIf="collapsed">Fedepapa</div>
+        <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
+            <span class="material-symbols-outlined close-icon">cancel</span>
+        </button>
+    </div>
+    <br>
+    <br>
+    <ul class="sidenav-nav">
+        <li class="sidenav-nav-item" *ngFor="let data of navData">
+            <a class="sidenav-nav-link" href="{{data.routerLink}}" title="{{data.label}}">
+                <span class="material-symbols-outlined sidenav-link-icon">{{data.icon}}</span>
+                <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+        <li class="sidenav-nav-item" *ngFor="let data of navPapa">
+            <a class="sidenav-nav-link" href="https://fedepapa.com/" target="_blank" title="{{data.label}}">
+                <span class="material-symbols-outlined sidenav-link-icon">{{data.icon}}</span>
+                <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+        <li class="sidenav-nav-item toend" *ngFor="let data of navLog">
+            <a class="sidenav-nav-link" href="{{data.routerLink}}" title="{{data.label}}">
+                <span class="material-symbols-outlined sidenav-link-icon">logout</span>
+                <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+    </ul>
+</div>

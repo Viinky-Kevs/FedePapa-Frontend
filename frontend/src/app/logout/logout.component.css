@@ -1,0 +1,58 @@
+.page-full {
+    height: auto;
+    min-height: 100%; 
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;;
+    background-image: url('../../assets/potato.jpg');
+    overflow-y: hidden;
+}
+
+.container-logout {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-logout .logout {
+    width: 500px;
+    background-color: #c0b254;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-logout .logout .text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container-logout .logout .text .icon span {
+    font-size: 50px;
+}
+
+.container-logout .logout .text .text-logout h2,
+.container-logout .logout .footer h5 {
+    font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width:500px){
+    .container-logout .logout {
+        width: 95%;
+    }
+}

@@ -1,0 +1,202 @@
+.container {
+    width: calc(100% - 50px);
+    height: 100vh;
+    margin-left: 50px;
+    position: relative;
+}
+
+.container .page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .page .options,
+.container .page .polygons {
+    width: 100%;
+    height: 50%;
+}
+
+.container .page .options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.page .options .user-info,
+.page .options .password {
+    height: 100%;
+    width: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    margin: 0.5rem;
+}
+
+.container .page .polygons {
+    width: 98%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    margin: 1rem;
+}
+
+.container .page .password .change {
+    width: 98%;
+    height: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .page .password .change .title {
+    width: 50%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container .page .password .change .title h3 {
+    font-size: 25px;
+    font-family: 'Poppins';
+}
+
+.container .page .password .change .inputs {
+    width: 90%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.container .page .password .change .inputs input {
+    width: 70%;
+    height: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.container .page .password .change .btn {
+    width: 98%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .page .password .change .btn button {
+    width: 60%;
+    height: 2rem;
+    background-color: rgb(226, 84, 52);
+    color: white;
+    font-size: 20px;
+    border-radius: 0.33rem;
+    cursor: pointer;
+}
+
+.container .page .password .change .btn button:hover {
+    background-color: rgb(255, 64, 0);
+}
+
+.container .page .options .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .page .options .user-info .title {
+    width: 50%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+.container .page .options .user-info .title h2 {
+    font-family: 'Poppins';
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.container .page .options .user-info .title .icon {
+    font-size: 50px;
+}
+
+.container .page .options .user-info .inputs {
+    width: 70%;
+    height: 4rem;
+    display: flex;
+    align-items: self-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.container .page .options .user-info .inputs label {
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.container .page .options .user-info .inputs input {
+    width: 80%;
+    height: 1.5rem;
+    background-color: white;
+    border-radius: 0.33rem;
+}
+
+.container-table {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.loader {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.loader:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width:500px){
+    .container {
+        height: 200vh;
+    }
+
+    .options {
+        flex-direction: column;
+    }
+
+    .container .page .options,
+    .container .page .polygons {
+        width: 96%;
+        height: 100%;
+    }
+
+    .page .options .user-info,
+    .page .options .password {
+        width: 98%;
+        height: 100%;
+    }
+}

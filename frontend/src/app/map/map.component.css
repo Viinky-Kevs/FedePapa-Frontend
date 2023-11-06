@@ -1,0 +1,168 @@
+@import url("https://unpkg.com/leaflet@1.9.3/dist/leaflet.css");
+@import url("https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css");
+
+.container {
+    width: calc(100% - 50px);
+    height: 100%;
+    margin-left: 50px;
+    position: relative;
+}
+
+.map {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#map {
+    height: 100vh;
+    width: 100%;
+}
+
+.modal {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    background: transparent !important;
+    cursor: grab;
+}
+
+.modal .info-modal {
+    width: 700px;
+    height: 400px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal .info-modal .left {
+    width: 50%;
+    height: 100%;
+    margin: 0.5rem;
+    background-color: #c0b254;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.modal .info-modal .right {
+    width: 50%;
+    height: 100%;
+    margin: 0.5rem;
+    background-color: #c0b254;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.modal .info-modal .left .inputs,
+.modal .info-modal .right .inputs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.modal .info-modal .left .inputs .input-form {
+    background-color: white;
+    height: 2rem;
+    width: 90%;
+    border-radius: 0.5rem;
+}
+
+.modal .info-modal .left .inputs .btn,
+.modal .info-modal .right .inputs .btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.modal .info-modal .left .inputs .btn button,
+.modal .info-modal .right .inputs .btn button{
+    background-color: rgb(215, 141, 76);
+    width: 90%;
+    height: 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Poppins';
+}
+
+.title {
+    font-family: 'Poppins';
+    text-align: center;
+}
+
+.modal .info-modal .right .icon {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: self-start;
+    justify-content: flex-end;
+    top: 0;
+    justify-self: start;
+}
+
+.modal .info-modal .right .icon a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.loader {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.loader:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width:500px){
+    .modal {
+        position: absolute;
+        width: 95%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal .info-modal {
+        flex-direction: column;
+    }
+
+    .modal .info-modal .left,
+    .modal .info-modal .right {
+        width: 82%;
+        height: 60%;
+    }
+}
