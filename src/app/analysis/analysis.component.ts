@@ -64,6 +64,8 @@ export class AnalysisComponent implements OnInit {
   hrPValues: any;
   prepPValues: any;
   windPMeanValues: any;
+  windPMaxValues: any;
+  windPMinValues: any;
 
   // Declaración de gráficos
   chartTempMean: any;
@@ -98,6 +100,11 @@ export class AnalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if(sessionStorage.getItem('userID') == null){
+      Swal.fire('No has iniciado Sesión!', 'Por favor inicia sesión o registrate!', 'error');
+      this.router.navigate(['/login']);
+    }
 
     this.http.post(this.ipBackend.ipBackend + 'get-polygons-user', 
       {'user_id': sessionStorage.getItem('userID')})
@@ -186,12 +193,14 @@ export class AnalysisComponent implements OnInit {
           this.loading = false;
           try{
             this.datePValues = this.dataP.map((d: { [x: string]: any; }) => d['date']);
-            this.tempPMeanValues = this.dataP.map((d: { [x: string]: any; }) => d['mean_temp']);
+            this.tempPMeanValues = this.dataP.map((d: { [x: string]: any; }) => d['temp_mean']);
             this.tempPMaxValues = this.dataP.map((d: { [x: string]: any; }) => d['temp_max']);
             this.tempPMinValues = this.dataP.map((d: { [x: string]: any; }) => d['temp_min']);
             this.hrPValues = this.dataP.map((d: { [x: string]: any; }) => d['hr']);
             this.prepPValues = this.dataP.map((d: { [x: string]: any; }) => d['prep']);
-            this.windPMeanValues = this.dataP.map((d: { [x: string]: any; }) => d['ws']);
+            this.windPMeanValues = this.dataP.map((d: { [x: string]: any; }) => d['ws_mean']);
+            this.windPMaxValues = this.dataP.map((d: { [x: string]: any; }) => d['ws_max']);
+            this.windPMinValues = this.dataP.map((d: { [x: string]: any; }) => d['ws_min']);
             this.drawPTempChart();
             this.drawPChartPrep();
             this.drawPChartHR();
@@ -670,6 +679,20 @@ export class AnalysisComponent implements OnInit {
             data: this.windPMeanValues,
             backgroundColor: 'rgba(213, 222, 75, 0.2)',
             borderColor: 'rgba(213, 222, 75, 1)',
+            borderWidth: 2
+          },
+          {
+            label: 'Velocidad del Viento máxima',
+            data: this.windPMaxValues,
+            backgroundColor: 'rgba(242, 72, 64, 0.2)',
+            borderColor: 'rgba(242, 72, 64, 1)',
+            borderWidth: 2
+          },
+          {
+            label: 'Velocidad del Viento mínima',
+            data: this.windPMinValues,
+            backgroundColor: 'rgba(64, 202, 242, 0.2)',
+            borderColor: 'rgba(64, 202, 242, 1)',
             borderWidth: 2
           },
         ]
