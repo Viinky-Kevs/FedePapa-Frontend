@@ -80,6 +80,7 @@ export class AnalysisComponent implements OnInit {
   dataC: any;
   dataP: any;
   area: any;
+  datesX: any;
 
   data = [
     {'date':'2023-01-01', 'day': 'Martes', 'prep': 10, 'temp': 10, 'ws': 10, 'hr':10},
@@ -116,9 +117,9 @@ export class AnalysisComponent implements OnInit {
       this.http.post(this.ipBackend.ipBackend + 'find-centroid', 
       {'polygon':JSON.stringify(this.coordinatesPolygon)})
       .subscribe((response:any)=> {
-        console.log(response);
         this.lat = response.centroid.lat;
         this.lng = response.centroid.lng;
+        this.area = response.area;
         this.zoom = 17;
         if(this.LeafletMap){
           this.LeafletMap.remove();
@@ -132,6 +133,7 @@ export class AnalysisComponent implements OnInit {
         const data = JSON.parse(response.data);
         this.dataC = data.data;
         try{
+          this.datesX = response.dates;
           this.dateValues = this.dataC.map((d: { [x: string]: any; }) => d['anyo_sem']);
           this.tempMeanValues = this.dataC.map((d: { [x: string]: any; }) => d['temperatura']);
           this.tempMaxValues = this.dataC.map((d: { [x: string]: any; }) => d['temperatura_maxima']);
@@ -145,6 +147,7 @@ export class AnalysisComponent implements OnInit {
           this.drawChartPrep();
           this.drawChartHR();
           this.drawWindChart();
+          this.loading = false;
         } catch{
           console.log('Error en asignar valores para gráfico!');
         }
@@ -155,7 +158,7 @@ export class AnalysisComponent implements OnInit {
       .subscribe((response:any)=> {
         this.data = response.data;
       });
-      this.loading = false;
+      
     }
     this.drawMap();
   }
@@ -214,6 +217,7 @@ export class AnalysisComponent implements OnInit {
       .subscribe((response:any)=> {
         this.loading = false;
         const data = JSON.parse(response.data_np);
+        this.datesX = response.dates;
         this.dataC = data.data;
         this.data = response.data_i;
         this.coordinatesPolygon = response.polygon;
@@ -258,11 +262,17 @@ export class AnalysisComponent implements OnInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
 
-    this.LeafletMap = L.map("map", { layers: [layer_1] }).setView(L.latLng(this.lat, this.lng), this.zoom);
+    var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
+
+    this.LeafletMap = L.map("map", { layers: [googleHybrid] }).setView(L.latLng(this.lat, this.lng), this.zoom);
     
-    var layer_3 = L.polygon(this.coordinatesPolygon, { color: 'red' }).addTo(this.LeafletMap);
+    L.polygon(this.coordinatesPolygon, { color: 'red' }).addTo(this.LeafletMap); //var layer_3 = 
 
     var baseMaps = {
+      "Híbrido": googleHybrid,
       "Cartográfica": layer_1,
       "Topografía": layer_2
     };
@@ -303,6 +313,7 @@ export class AnalysisComponent implements OnInit {
         ]
       },
       options: {
+        responsive: true,
         scales: {
           y: {
             display: true,
@@ -319,6 +330,24 @@ export class AnalysisComponent implements OnInit {
               text: 'Fecha (Año-Semana)'
             }
           },
+          x2:{
+            position:'bottom',
+            min:0,
+            max:5,
+            title: {
+              display: true,
+              text: 'Fecha (Día-Mes-Año)'
+            },
+            grid:{
+              display:false,
+            },
+            ticks: {
+              callback: (value:any) => {
+                const customLabels = this.datesX;
+                return customLabels[value] || '';
+              }
+            }
+          }
         }
       }
     }); 
@@ -331,7 +360,7 @@ export class AnalysisComponent implements OnInit {
         labels: this.dateValues,
         datasets: [
           {
-            label: 'Precitación',
+            label: 'Precipitación',
             data: this.prepValues,
             backgroundColor: 'rgba(64, 202, 242, 0.2)',
             borderColor: 'rgba(64, 202, 242, 1)',
@@ -356,6 +385,24 @@ export class AnalysisComponent implements OnInit {
               text: 'Fecha (Año-Semana)'
             }
           },
+          x2:{
+            position:'bottom',
+            min:0,
+            max:5,
+            title: {
+              display: true,
+              text: 'Fecha (Día-Mes-Año)'
+            },
+            grid:{
+              display:false,
+            },
+            ticks: {
+              callback: (value:any) => {
+                const customLabels = this.datesX;
+                return customLabels[value] || '';
+              }
+            }
+          }
         }
       }
     });
@@ -393,6 +440,24 @@ export class AnalysisComponent implements OnInit {
               text: 'Fecha (Año-Semana)'
             }
           },
+          x2:{
+            position:'bottom',
+            min:0,
+            max:5,
+            title: {
+              display: true,
+              text: 'Fecha (Día-Mes-Año)'
+            },
+            grid:{
+              display:false,
+            },
+            ticks: {
+              callback: (value:any) => {
+                const customLabels = this.datesX;
+                return customLabels[value] || '';
+              }
+            }
+          }
         }
       }
     });
@@ -444,6 +509,24 @@ export class AnalysisComponent implements OnInit {
               text: 'Fecha (Año-Semana)'
             }
           },
+          x2:{
+            position:'bottom',
+            min:0,
+            max:5,
+            title: {
+              display: true,
+              text: 'Fecha (Día-Mes-Año)'
+            },
+            grid:{
+              display:false,
+            },
+            ticks: {
+              callback: (value:any) => {
+                const customLabels = this.datesX;
+                return customLabels[value] || '';
+              }
+            }
+          }
         }
       }
     });
@@ -509,7 +592,7 @@ export class AnalysisComponent implements OnInit {
         labels: this.datePValues,
         datasets: [
           {
-            label: 'Precitación',
+            label: 'Precipitación',
             data: this.prepPValues,
             backgroundColor: 'rgba(64, 202, 242, 0.2)',
             borderColor: 'rgba(64, 202, 242, 1)',

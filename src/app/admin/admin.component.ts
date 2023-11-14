@@ -168,11 +168,17 @@ export class AdminComponent implements OnInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
 
-    this.LeafletMap = L.map("map", { layers: [layer_1] }).setView(L.latLng(this.lat, this.lng), this.zoom);
+    var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
+
+    this.LeafletMap = L.map("map", { layers: [googleHybrid] }).setView(L.latLng(this.lat, this.lng), this.zoom);
     
-    var layer_3 = L.polygon(this.coordinatesPolygon, { color: 'red' }).addTo(this.LeafletMap);
+    L.polygon(this.coordinatesPolygon, { color: 'red' }).addTo(this.LeafletMap); //var layer_3 = 
 
     var baseMaps = {
+      "Híbrido": googleHybrid,
       "Cartográfica": layer_1,
       "Topografía": layer_2
     };
