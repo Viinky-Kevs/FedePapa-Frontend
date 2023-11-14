@@ -5,5 +5,6 @@ import { Injectable } from '@angular/core';
 })
 
 export class IP {  
-  ipBackend: string = 'https://backend-fedepapa-9ck6e.ondigitalocean.app/'; //'http://localhost:5000/';
+  ipBackend: string = 'https://backend-fedepapa-9ck6e.ondigitalocean.app/'; 
+  //ipBackend: string = 'http://localhost:5000/';
 }

@@ -142,6 +142,12 @@
 .container .body .left .map {
     display: flex;
     justify-content: center;
+    margin: 0.33rem;
+}
+
+.container .body .left .area h1 {
+    font-size: 22px;
+    font-family: 'Poppins';
 }
 
 .container .body .left .dates {
@@ -154,6 +160,7 @@
 }
 
 .container .body .left .dates .input-dates {
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;

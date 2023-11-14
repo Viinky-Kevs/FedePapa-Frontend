@@ -79,6 +79,7 @@ export class AnalysisComponent implements OnInit {
   // Información de Back
   dataC: any;
   dataP: any;
+  area: any;
 
   data = [
     {'date':'2023-01-01', 'day': 'Martes', 'prep': 10, 'temp': 10, 'ws': 10, 'hr':10},
@@ -115,6 +116,7 @@ export class AnalysisComponent implements OnInit {
       this.http.post(this.ipBackend.ipBackend + 'find-centroid', 
       {'polygon':JSON.stringify(this.coordinatesPolygon)})
       .subscribe((response:any)=> {
+        console.log(response);
         this.lat = response.centroid.lat;
         this.lng = response.centroid.lng;
         this.zoom = 17;
@@ -151,7 +153,6 @@ export class AnalysisComponent implements OnInit {
       this.http.post(this.ipBackend.ipBackend + 'get-ideam-data', 
       {'polygon':JSON.stringify(this.coordinatesPolygon)})
       .subscribe((response:any)=> {
-        console.log(response.data);
         this.data = response.data;
       });
       this.loading = false;
@@ -215,8 +216,8 @@ export class AnalysisComponent implements OnInit {
         const data = JSON.parse(response.data_np);
         this.dataC = data.data;
         this.data = response.data_i;
-        console.log(this.data);
         this.coordinatesPolygon = response.polygon;
+        this.area = response.area;
         this.lat = response.centroid.lat;
         this.lng = response.centroid.lng;
         this.zoom = 17;
@@ -432,7 +433,7 @@ export class AnalysisComponent implements OnInit {
             display: true,
             title: {
               display: true,
-              text: 'Temperatura (°C)'
+              text: 'Velocidad del viento (m/s)'
             }
           },
           x:
@@ -596,7 +597,7 @@ export class AnalysisComponent implements OnInit {
             display: true,
             title: {
               display: true,
-              text: 'Temperatura (°C)'
+              text: 'Velocidad del viento (m/s)'
             }
           },
           x:

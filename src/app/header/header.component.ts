@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit{
   navLog = logOut;
   screenWidth = 0;
 
+  logo: boolean = true;
+
   @HostListener('window:resize', ['$event'])
   onResize(envent: any){
     this.screenWidth = window.innerWidth;
@@ -34,9 +36,11 @@ export class HeaderComponent implements OnInit{
 
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
+    this.logo = !this.logo;
   }
 
   closeSidenav(): void{
     this.collapsed = false;
+    this.logo = !this.logo;
   }
 }

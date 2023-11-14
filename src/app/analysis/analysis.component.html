@@ -48,13 +48,16 @@
                 </div>
             </div>
             <div class="map" id="map"></div>
+            <div class="area">
+                <h1> Área del polígono: {{area}} ha</h1>
+            </div>
             <div class="dates">
                 <div class="input-dates">
                     <label for="date_ini">Fecha inicial de Siembra (Tentativa)</label>
                     <input type="date" name="date_ini" [(ngModel)]="dates.initial">
                 </div>
                 <div class="input-dates">
-                    <label for="date_fin">Fecha final de Siembra (Tentativa)</label>
+                    <label for="date_fin">Fecha de Cosecha (Tentativa)</label>
                     <input type="date" name="date_fin" [(ngModel)]="dates.end">
                 </div>
                 <div class="btn">

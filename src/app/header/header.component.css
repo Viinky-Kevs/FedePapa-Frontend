@@ -2,7 +2,7 @@
     background: #6d952e;
     transition: all .3s ease;
     position: fixed;
-    z-index: 10;
+    z-index: 9999;
     top: 0;
     width: 50px;
     height: 100vh;
@@ -12,7 +12,8 @@
     display: flex;
     align-items: center;
     margin: 1rem 0.4rem;
-    width: 90%;
+    width: 98%;
+    justify-content: space-between;
 }
 
 .sidenav .logo-container .logo {
@@ -108,8 +109,23 @@
     color: black;
 }
 
+.logo-container-fnfp {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 0.33rem;
+}
+
 img {
     width: 40px;
+    transition: ease-out;
+}
+
+.logo-fnfp {
+    width: 70%;
+    cursor: pointer;
 }
 
 .toend {
