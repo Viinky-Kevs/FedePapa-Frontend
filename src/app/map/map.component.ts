@@ -125,7 +125,6 @@ export class MapComponent implements OnInit  {
     this.loading = true;
     this.http.post(this.ipBackend.ipBackend + 'get-draw-coords-tosave', this.userPolygon)
     .subscribe((response: any) => {
-      console.log(response);
       if(response.ok){
         Swal.fire('Guardado!', response.message, 'success');
         this.router.navigate(['/analysis'], { state: { coordinatesPolygon: this.userPolygon.coordinates }});

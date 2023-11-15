@@ -111,11 +111,7 @@ export class AnalysisComponent implements OnInit {
       .subscribe((response:any)=> {
         if(response.ok){
           this.dataOptions = response.data;
-        }else{
-          Swal.fire('No tienes polígonos guardados!', 'Vuelve a dibujar uno y si quieres puedes guardarlo', 'error');
-          this.router.navigate(['/map']);
         }
-        
       });
 
     this.coordinatesPolygon = window.history.state.coordinatesPolygon;
@@ -166,6 +162,18 @@ export class AnalysisComponent implements OnInit {
         this.data = response.data;
       });
       
+    }else{
+      this.http.post(this.ipBackend.ipBackend + 'get-polygons-user', 
+      {'user_id': sessionStorage.getItem('userID')})
+      .subscribe((response:any)=> {
+        if(response.ok){
+          this.dataOptions = response.data;
+        }else{
+          Swal.fire('No tienes polígonos guardados!', 'Vuelve a dibujar uno y si quieres puedes guardarlo', 'error');
+          this.router.navigate(['/map']);
+        }
+        
+      });
     }
     this.drawMap();
   }
