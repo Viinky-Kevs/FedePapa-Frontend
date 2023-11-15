@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { IP } from '../app.service';
 import Swal from 'sweetalert2';
 import * as L from 'leaflet';
-import { elements } from 'chart.js';
 
 @Component({
   selector: 'app-admin',
@@ -20,6 +19,7 @@ export class AdminComponent implements OnInit {
 
   displayedColumns: string[] = ['user_id', 'username', 'email', 'created_on', 'last_login', 'isadmin'];
   data: any[] = [];
+
   loading = false;
 
   polygonsColumns: string[] = ['id_polygon', 'name_polygon', 'geometry', 'polygon_area', 'user_id', 'username', 'created_on'];

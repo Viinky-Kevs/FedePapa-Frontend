@@ -21,26 +21,13 @@ mat-tab-group {
 .container-table {
     width: 95%;
     height: 50%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
     margin: 2rem;
     background-color: white;
-    overflow-x: scroll;
-    scrollbar-width: 0;
+    overflow: auto;
 }
 
-.table {
+table {
     width: 100%;
-    overflow-x: auto;
-}
-
-.paginator {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
 }
 
 .admin-content {
@@ -49,7 +36,7 @@ mat-tab-group {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
+    padding: 0.8rem;
 }
 
 .admin-content .add-user,
@@ -63,16 +50,17 @@ mat-tab-group {
     padding: 0.5rem;
 }
 
-.input-user {
+.generic-div .input-user {
     width: 100%;
-    height: 15%;
+    height: 17%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
 }
 
-.input-user label {
+.generic-div .input-user label {
+    margin: 0.33rem;
     font-family: 'Poppins', sans-serif;
     color: black;
     font-size: 20px;
@@ -83,11 +71,21 @@ mat-tab-group {
     margin-left: 0.5rem;
 }
 
-.input-user .input-text {
+.generic-div .input-user select {
+    height: 2rem;
+    width: 98%;
+    border-radius: 0.33rem;
+    background-color: white;
+}
+
+.add-user .input-user .input-text {
     width: 90%;
     height: 2rem;
     background-color: white;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .btn-login {
@@ -119,14 +117,7 @@ mat-tab-group {
     align-items:safe;
     justify-content: space-between;
     flex-direction: column;
-    height: 78%;
-}
-
-.input-option {
-    width: 95%;
-    height: 2.2rem;
-    border-radius: 5px;
-    background-color: white;
+    height: 86%;
 }
 
 .admin-content .container-select {
@@ -183,26 +174,60 @@ mat-tab-group {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
 }
+/*    Table options   */
 
-@media (max-width:500px){
+.mat-column-user_id,
+.mat-column-id_polygon {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+}
+  
+.mat-mdc-row:hover .mat-mdc-cell {
+    border-color: currentColor;
+}
+
+@media (max-width:900px){
     .container-page {
         height: 200vh;
     }
 
     .container-table {
-        height: 100%;
+        height: 100vh;
     }
 
     .admin-content {
         flex-direction: column;
-        height: 100%;
+        height: 150vh;
     }
-    .admin-content .add-user,
-    .admin-content .admin-user,
-    .admin-content .remove-user,
+
     .admin-content .container-select,
     .admin-content .map {
         width: 98%;
-        height: 50vh;
+        height: 40vh;
+    }
+
+    .admin-content .add-user,
+    .admin-content .admin-user,
+    .admin-content .remove-user {
+        width: 98%;
+        height: 100vh;
+    }
+
+    .generic-div {
+        height: 65%;
+    }
+}
+
+@media (max-width:1500px){
+    .generic-div {
+        height: 75%;
     }
 }

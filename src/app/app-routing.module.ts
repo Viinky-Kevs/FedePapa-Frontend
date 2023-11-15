@@ -7,6 +7,7 @@ import { MapComponent } from './map/map.component';
 import { AnalysisComponent } from './analysis/analysis.component';
 import { AdminComponent } from './admin/admin.component';
 import { ErrorComponent } from './error/error.component';
+import { PassComponent } from './pass/pass.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'analysis', component: AnalysisComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'reset-password', component: PassComponent },
   { path: '**', pathMatch: 'full', component: ErrorComponent },
 ];
 

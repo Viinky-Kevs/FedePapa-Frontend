@@ -1,0 +1,130 @@
+.page-full {
+    height: auto;
+    min-height: 100%; 
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;;
+    background-image: url('../../assets/potato.jpg');
+    overflow-y: hidden;
+}
+
+.container-data {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-data .data {
+    width: 500px;
+    height: 350px;
+    background-color: rgba(109,149,46,1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+.container-data .data h1 {
+    font-family: 'Poppins';
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+
+.container-data .data .input-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+}
+
+.container-data .data .input-user .inputs {
+    width: 90%;
+    height: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-data .data .input-user .inputs label {
+    font-size: 20px;
+    font-family: 'Poppins';
+    color:white;
+}
+
+.container-data .data .input-user .inputs input {
+    width: 90%;
+    height: 2rem;
+    border-radius: 0.33rem;
+}
+
+.container-data .data .input-user .inputs button {
+    width: 90%;
+    height: 2rem;
+    border-radius: 0.33rem;
+    font-family: 'Poppins';
+    background-color: #c0b254;
+}
+
+.container-data .data .footer a {
+    text-decoration: none;
+    font-family: 'Poppins';
+    font-size: 18px;
+}
+
+.container-data .data .logo-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container-data .data .logo-img img {
+    width: 50%;
+}
+
+.loader {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.loader:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width:500px){
+    .container-data .data {
+        width: 98%;
+    }
+}

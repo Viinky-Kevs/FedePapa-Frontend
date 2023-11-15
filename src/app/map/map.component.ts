@@ -81,11 +81,11 @@ export class MapComponent implements OnInit  {
     
 
     var baseMaps = {
-      "Híbrido": googleHybrid,
-      "Ortofoto": layer_1,
+      "Mapa Híbrido": googleHybrid,
+      "Satelital": layer_1,
     };
     var overLay = {
-      "Madnick": layer_2,
+      "Capa Base": layer_2,
     }
 
     L.control.layers(

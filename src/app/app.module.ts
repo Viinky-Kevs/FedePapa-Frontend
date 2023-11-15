@@ -21,6 +21,7 @@ import { AnalysisComponent } from './analysis/analysis.component';
 import { AdminComponent } from './admin/admin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorComponent } from './error/error.component';
+import { PassComponent } from './pass/pass.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ErrorComponent } from './error/error.component';
     MapComponent,
     AnalysisComponent,
     AdminComponent,
-    ErrorComponent
+    ErrorComponent,
+    PassComponent
   ],
   imports: [
     BrowserModule,

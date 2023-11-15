@@ -1,0 +1,32 @@
+<div class="page-full">
+    <div class="container">
+        <div class="container-data">
+            <div class="data">
+                <div class="logo-img">
+                    <img src="../../assets/fp.png" alt="">
+                </div>
+                <h1>Recuperación de contraseña</h1>
+                <div class="input-user">
+                    <div class="inputs">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" [(ngModel)]="data.email">
+                    </div>
+                    <div class="inputs">
+                        <label for="username">Nombre de Usuario</label>
+                        <input type="text" name="username" [(ngModel)]="data.username">
+                    </div>
+                    <div class="inputs">
+                        <button (click)="send()">Recuperar contraseña</button>
+                    </div>
+                </div>
+                <div class="footer">
+                    <a href="login">Volver para iniciar sesión</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div *ngIf="loading" class="loader">
+    <mat-spinner></mat-spinner>
+</div>
